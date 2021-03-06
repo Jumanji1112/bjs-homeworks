@@ -5,28 +5,33 @@ function getResult(a,b,c){
   let d;
     d = b** - 4 * a * c; //дискриминант
     if (d < 0){
-    } else if (d == 0){ // массив с 1 корнем
-      x = -b / (2 * a); 
-    } else if (d > 0){ //массив с 2 корнями
+      return x;
+    } 
+    else if (d == 0){ // массив с 1 корнем
+      x.push ((-b + Math.sqrt(d)) / (2 * a));
+          return x;
+    } 
+    else if (d > 0){ //массив с 2 корнями
       x.push((-b - Math.sqrt(d)) / (2 * a));
       x.push((-b + Math.sqrt(d)) / (2 * a));
+          return x;
     }
-    return x;
 }
 
 function getAverageMark(marks){
   let sum = 0;
   let amt = (marks.slice (0, 5)); //берем из массива первые 5 
-	if (marks.length == 0){
-    		console.log ('Нет оценок');
- 		    averageMark = 0;
-	} else if (marks.length > 5){
-		console.log ('Количсетво оценок больше 5');
-	}
-    for (let i = 0; i < amt.length; i++){
+
+	    for (let i = 0; i < amt.length; i++){
     	sum += amt[i]; //суммируем оценки
-    }
+      }
 	let averageMark = sum / amt.length; // средняя оценка
+    if (marks.length == 0){
+        console.log ('Нет оценок');
+      return  averageMark = 0;
+  } else if (marks.length > 5){
+    console.log ('Количсетво оценок больше 5');
+  }
     return averageMark;
 }
 
