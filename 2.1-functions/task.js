@@ -44,46 +44,32 @@ function showSolutionsMessage (a, b, c){
 //Задача №2. Журнал успеваемости
 
 function getAverageScore(data){ 
-	let sum = 0;
-  let sr = {};
-for	(let lesson in data){
-	 for (let i = 0; i < data[lesson].length; i++){
-    sum += data[lesson][i]; //суммируем оценки
-  }
-  let averageMark = sum / data[lesson].length; // средняя оценка
-  sr[lesson] = averageMark;
-  sum = 0;
-}
-return sr;
+  let copyMarks = {};
+  for (let lesson in data){
+    copyMarks[lesson] = getAverageMark(data[lesson]);
+      };
+copyMarks.average = 0
+      for (let lesson in copyMarks){
+  copyMarks.average = getAverageMark(copyMarks[lesson]);
+      }
+
+return copyMarks;
 }
 
-let marks = getAverageScore({
- algebra: [2, 4, 5, 2, 3, 4],
- geometry: [2, 4, 5],
- russian: [3, 3, 4, 5],
- physics: [5, 5],
- music: [2, 2, 6]
+
+getAverageScore({
+  algebra: [2, 4, 5, 2, 3, 4],
+  geometry: [2, 4, 5],
+  russian: [3, 3, 4, 5],
+  physics: [5, 5],
+  music: [2, 2, 6]
 });
-console.log (marks);
-
-// getAverageScore({
-// 	algebra: [2, 4, 5, 2, 3, 4],
-// 	geometry: [2, 4, 5],
-// 	russian: [3, 3, 4, 5],
-// 	physics: [5, 5],
-// 	music: [2, 2, 6]
-// 	//average: [],
-// });
 
 function getAverageMark(marks) { 
-    let sum = 0;
-    console.log (sum);
-console.log (getAverageScore);
-
-	// for(let lessons in marks){
- //   for (let i = 0; i < marks[lessons].length; i++){
- //    sum += marks[lesson][i];
- //    console.log (sum);
- //  }
+  let sum = 0;
+  if (marks.length === 0) return 0;
+  for (let i = 0; i < marks.length; i++){
+    sum += marks[i];
+  }
+return sum /marks.length;
 }
-getAverageMark();
