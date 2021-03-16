@@ -2,11 +2,11 @@
 
 function calculateTotalMortgage(percent, contribution, amount, date) {
 	percent = +percent;
-	if ( percent == 0 || percent == "" || percent == undefined || typeof percent !== 'number' || percent != percent )		return "Введите корректные данные в поле  \"Процентная ставка\"" ;
+	if ( isNaN(percent) || percent < 0 || percent == "" || percent == undefined || typeof percent !== 'number' || percent != percent ) return "Введите корректные данные в поле  \"Процентная ставка\"" ;
 	contribution = +contribution;
-	if (contribution < 0 || contribution == "" || contribution == undefined || typeof contribution !== 'number' || contribution != contribution) return "Введите корректные данные в поле  \"Начальный взнос\"" ;
+	if (isNaN (contribution) || contribution < 0 ) return "Введите корректные данные в поле  \"Начальный взнос\"" ;
 	amount = +amount;
-	if (amount <= 0 || amount == "" || amount == undefined || typeof amount !== 'number' || amount != amount) return "Введите корректные данные в поле  \"Общая стоимость\"" ;
+	if (isNaN(amount) || amount < 0 || amount == "" || amount == undefined || typeof amount !== 'number' || amount != amount) return "Введите корректные данные в поле  \"Общая стоимость\"" ;
 
 
 	let debet = amount - contribution; //тело кредита
@@ -28,3 +28,11 @@ function getGreeting(name) {
 	};
 		return (`Привет, мир! Меня зовут ${name}.`);
 };
+
+// function getGreeting(name) {
+// let displayName = name
+// 	if (!displayName){
+// 		displayName = "Аноним"
+// 	};
+// 		return `Привет, мир! Меня зовут ${displayName}.`;
+// };
