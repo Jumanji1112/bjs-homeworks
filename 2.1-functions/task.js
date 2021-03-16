@@ -44,32 +44,32 @@ function showSolutionsMessage (a, b, c){
 //Задача №2. Журнал успеваемости
 
 function getAverageScore(data){ 
-  let copyMarks = {};
-  for (let lesson in data){
-    copyMarks[lesson] = getAverageMark(data[lesson]);
-      };
-copyMarks.average = 0
-      for (let lesson in copyMarks){
-  copyMarks.average = getAverageMark(copyMarks[lesson]);
-      }
-
-return copyMarks;
+  let averageMark = {};
+for (let lesson in data){
+  averageMark[lesson] = getAverageMark(data[lesson]); 
+ };
+ averageMark.average = getAverageMark(Object.values(averageMark));
+return averageMark;
 }
 
-
-getAverageScore({
-  algebra: [2, 4, 5, 2, 3, 4],
-  geometry: [2, 4, 5],
-  russian: [3, 3, 4, 5],
-  physics: [5, 5],
-  music: [2, 2, 6]
+let marks = getAverageScore({
+    algebra: [2, 4, 5, 2, 3, 4],
+    geometry: [2, 4, 5],
+    russian: [3, 3, 4, 5],
+    physics: [5, 5],
+    music: [2, 2, 6],
+    english: [4, 4, 3],
+    poerty: [5, 3, 4],
+    chemistry: [2],
+    french: [4, 4]
 });
 
-function getAverageMark(marks) { 
+function getAverageMark(marks) {
   let sum = 0;
-  if (marks.length === 0) return 0;
-  for (let i = 0; i < marks.length; i++){
-    sum += marks[i];
+  if (marks.length == 0) return 0; // если массив = 0
+    for (let i = 0; i < marks.length; i++){
+    sum += marks[i]; //суммируем оценки
   }
-return sum /marks.length;
+ return  sum / marks.length; // средняя оценка
+
 }
